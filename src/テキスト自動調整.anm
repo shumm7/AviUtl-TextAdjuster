@@ -1,6 +1,25 @@
---track1:—]”’,0,2000,20,0.1
+--track0:X—]”’,0,2000,20,0.1
+--track1:Y—]”’,0,2000,20,0.1
+--dialog:X/chk,mode_enablex=1;Y/chk,mode_enabley=1;À•W‚ÅŽ©“®’²®/chk,mode_coord=1;
 
-local width = obj.screen_w - obj.track1 * 2
-if (obj.w > width) then
-    obj.effect("Šg‘å—¦", "X", width / obj.w * 100)
+local screen_w, screen_h = obj.screen_w, obj.screen_h
+local offset_w, offset_h = 0, 0
+if mode_coord==1 then
+    offset_w = math.abs(obj.x + obj.ox) * 2
+    offset_h = math.abs(obj.y + obj.oy) * 2
+end
+
+local width = screen_w - obj.track0 * 2
+local height = screen_h - obj.track1 * 2
+
+if mode_enablex==1 then
+    if obj.w > width - offset_w then
+        obj.effect("Šg‘å—¦", "X", (width - offset_w) / obj.w * 100)
+    end
+end
+
+if mode_enabley==1 then
+    if obj.h > height - offset_h then
+        obj.effect("Šg‘å—¦", "Y", (height - offset_h) / obj.h * 100)
+    end
 end
