@@ -1,0 +1,6 @@
+--track1:—]”’,0,2000,20,0.1
+
+local width = obj.screen_w - obj.track1 * 2
+if (obj.w > width) then
+    obj.effect("Šg‘å—¦", "X", width / obj.w * 100)
+end
